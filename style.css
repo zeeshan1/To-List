@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+}
+
+.form-container input {
+    border: 1px solid #ddd;
+    height: 40px;
+    border-radius: 8px;
+    width: 480px;
+    padding: 0 8px;
+    margin-inline-end: 16px;
+}
+
+.input-container {
+    background: #efefef;
+    padding: 40px;
+}
+
+.to-do-list-container {
+    margin-top: 20px;
+}
+
+.to-do-list-container li {
+    transform: translateY(10px);
+    transition: all 400ms linear;
+}
+
+.list-item {
+    width: 100%;
+    height: 40px;
+    list-style: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    transform: translateY(0);
+    transition: all 400ms linear;
+}
+
+.list-item:nth-child(even) {
+    background: #efefef;
+}
+
+.actions {
+    display: flex;
+    column-gap: 8px;
+}
+
+.edit,
+.delete {
+    padding: 4px 8px;
+    cursor: pointer;
+    border: none;
+    background-color: #ddd;
+    text-transform: capitalize;
+}
+
+.form-container .btn {
+    height: 40px;
+    padding: 4px 16px;
+    border-radius: 8px;
+    background: #ab0101;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
