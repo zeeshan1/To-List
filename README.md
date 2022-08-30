@@ -1,3 +1,3 @@
-# To-List
+# To-Do List
 
-## Vanila Javascript To Do List
+## Vanilla Javascript To Do List
