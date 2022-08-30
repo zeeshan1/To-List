@@ -13,52 +13,57 @@ function createEle(event) {
 }
 
 function addToDoItem() {
-    const listItem = createEle({
-        item: 'li',
-        attr: 'list-item'
-    })
+    try {
+        if (inputContainer.value) {
+            const listItem = createEle({
+                item: 'li',
+                attr: 'list-item'
+            })
 
-    const actions = createEle({
-        item: 'div',
-        attr: 'actions',
-    })
-    const editBtn = createEle({
-        item: 'button',
-        attr: 'edit',
-        text: 'Edit'
-    })
-    const deleteBtn = createEle({
-        item: 'button',
-        attr: 'delete',
-        text: 'Delete'
-    })
+            const actions = createEle({
+                item: 'div',
+                attr: 'actions',
+            })
+            const editBtn = createEle({
+                item: 'button',
+                attr: 'edit',
+                text: 'Edit'
+            })
+            const deleteBtn = createEle({
+                item: 'button',
+                attr: 'delete',
+                text: 'Delete'
+            })
 
-    const textContent = createEle({
-        item: 'span',
-        attr: 'text-container',
-        text: inputContainer.value
-    })
+            const textContent = createEle({
+                item: 'span',
+                attr: 'text-container',
+                text: inputContainer.value
+            })
 
-    actions.append(editBtn)
-    actions.append(deleteBtn)
-    listItem.append(textContent)
-    listItem.append(actions);
+            actions.append(editBtn)
+            actions.append(deleteBtn)
+            listItem.append(textContent)
+            listItem.append(actions);
 
-    listContainer.append(listItem);
-    inputContainer.value = ''
-    editBtn.addEventListener('click', function(event) {
-        editItem(event)
-    })
-    deleteBtn.addEventListener('click', function(event) {
-        deleteItem(event)
-    })
+            listContainer.append(listItem);
+            inputContainer.value = ''
+            editBtn.addEventListener('click', function(event) {
+                editItem(event)
+            })
+            deleteBtn.addEventListener('click', function(event) {
+                deleteItem(event)
+            })
+            inputContainer.style.borderColor = '#ddd'
+        } else if (inputContainer.value === '') {
+            inputContainer.style.borderColor = 'red'
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
-function editToDoItem(event) {
-    event.textContent = inputContainer.value;
-    inputContainer.value = ''
-
-}
 let targetElement = ''
 
 function editItem(event) {
@@ -75,10 +80,17 @@ function deleteItem(event) {
     currentItem.remove();
 }
 editBtn.addEventListener('click', function() {
-    addBtn.hidden = false;
-    editBtn.hidden = true;
-    targetElement.querySelector('.text-container').textContent = inputContainer.value;
-    inputContainer.value = ''
+    if (targetElement.querySelector('.text-container').textContent == inputContainer.value) {
+        inputContainer.style.borderColor = 'red'
+        return
+    } else {
+        addBtn.hidden = false;
+        editBtn.hidden = true;
+        targetElement.querySelector('.text-container').textContent = inputContainer.value;
+        inputContainer.value = '';
+        inputContainer.style.borderColor = '#ddd'
+    }
+
 })
 document.addEventListener('keypress', function(event) {
     if (event.key == 'Enter') {
